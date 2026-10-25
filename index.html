@@ -11,15 +11,23 @@
 <meta name="robots" content="noindex,nofollow">
 <style>
 html,body{height:100%;margin:0;background:#1f6f55;color:#fff;font-family:-apple-system,"Hiragino Sans",sans-serif}
-body{display:flex;align-items:center;justify-content:center}
-a{color:#fff}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;padding:24px;box-sizing:border-box}
+img{width:96px;height:96px;border-radius:22px}
+a.btn{display:inline-block;background:#fff;color:#1f6f55;font-weight:700;font-size:18px;padding:14px 32px;border-radius:12px;text-decoration:none}
+p{margin:0;font-size:14px;line-height:1.7;opacity:.9}
 </style>
 <script>
-// 開いたらすぐ、本体のアプリへ移動する（戻るボタンでここに戻らないよう replace を使う）
-location.replace("https://script.google.com/a/macros/gesetmedical.jp/s/AKfycbwN5IVsM3JWkKu-Ke8jZhtBxvEOfw-TdRuHuhAOF8T97QoRzOzNzoxgeE_ecvas5BIG/exec");
+var APP_URL = "https://script.google.com/a/macros/gesetmedical.jp/s/AKfycbwN5IVsM3JWkKu-Ke8jZhtBxvEOfw-TdRuHuhAOF8T97QoRzOzNzoxgeE_ecvas5BIG/exec";
+// ホーム画面のアイコンから開いたとき（アプリ表示のとき）だけ、自動で本体へ移動する。
+// Safari で普通に開いたときは移動せず、ホーム画面に追加できるようにする。
+var isStandalone = (window.navigator.standalone === true) ||
+  (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+if (isStandalone) { location.replace(APP_URL); }
 </script>
 </head>
 <body>
-<p>移動しない場合は <a href="https://script.google.com/a/macros/gesetmedical.jp/s/AKfycbwN5IVsM3JWkKu-Ke8jZhtBxvEOfw-TdRuHuhAOF8T97QoRzOzNzoxgeE_ecvas5BIG/exec">こちら</a></p>
+<img src="apple-touch-icon.png" alt="">
+<a class="btn" href="https://script.google.com/a/macros/gesetmedical.jp/s/AKfycbwN5IVsM3JWkKu-Ke8jZhtBxvEOfw-TdRuHuhAOF8T97QoRzOzNzoxgeE_ecvas5BIG/exec">アプリを開く</a>
+<p>ホーム画面に追加するときは、<br>共有ボタン →「ホーム画面に追加」を押してください。<br>追加したアイコンから開くと、自動でアプリに移動します。</p>
 </body>
 </html>
